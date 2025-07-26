@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Creative Agency Responsive HTML5 Template. Built with Bootstrap, HTML5, CSS3 and jQuery.">
+        <meta name="keywords" content="HTML, CSS, JavaScript, jQuery, Animation, Bootstrap, Font Awesome, Revolution Slider, Labflox, Portfolio">
+        <meta name="author" content="Themewar">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AIDAC - Laboratory & Research Responsive HTML Template</title>
+
+        <!-- Start Include All CSS -->
+        <link rel="stylesheet" href="/styles/css/bootstrap.css"/>
+        <link rel="stylesheet" href="/styles/css/animate.css"/>
+        <link rel="stylesheet" href="/styles/css/font-awesome.css"/>
+        <link rel="stylesheet" href="/styles/css/labflox-icon.css"/>
+        <link rel="stylesheet" href="/styles/css/owl.theme.default.min.css"/>
+        <link rel="stylesheet" href="/styles/css/owl.carousel.min.css"/>
+        <link rel="stylesheet" href="/styles/css/slick.css">
+        <link rel="stylesheet" href="/styles/css/lightcase.css"/>
+        <link rel="stylesheet" href="/styles/css/preloader.css"/>
+        
+        <!-- Revolution Slider Setting CSS -->
+        <link rel="stylesheet" href="/styles/css/settings.css">
+
+        <link rel="stylesheet" href="/styles/css/preset.css"/>
+        <link rel="stylesheet" href="/styles/css/ignore_for_wp.css"/>
+        <link rel="stylesheet" href="/styles/css/theme.css"/>
+        <link rel="stylesheet" href="/styles/css/responsive.css"/>
+        <!-- End Include All CSS -->
+
+        <!-- Favicon Icon -->
+        <link rel="icon"  type="image/png" href="/assets/images/favicon.png">
+        <!-- Favicon Icon -->
+        <style>
+/* 让所有researchItem2卡片高度一致，按钮底部对齐 */
+.researchSection .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.researchSection .col-md-6.col-lg-4 {
+    display: flex;
+    flex-direction: column;
+}
+.researchItem2 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 0;
+    padding: 32px 24px 24px 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15), 0 1.5px 6px rgba(0,0,0,0.10);
+    transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1), transform 0.3s cubic-bezier(.4,2,.6,1), background 0.3s, color 0.3s;
+    color: #222;
+}
+.researchItem2:hover {
+    box-shadow: 0 12px 36px rgba(0,0,0,0.22), 0 3px 12px rgba(0,0,0,0.16);
+    transform: translateY(-8px) scale(1.03);
+    z-index: 2;
+    background: #fc3329;
+    color: #fff;
+}
+.researchItem2:hover h3,
+.researchItem2:hover h3 a,
+.researchItem2:hover p {
+    color: #fff;
+}
+.researchItem2:hover i {
+    color: #fff;
+}
+.researchItem2 h3 {
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+.researchItem2 p {
+    flex: 1 1 auto;
+    margin-bottom: 16px;
+}
+.researchItem2 .lab_btn {
+    margin-top: auto;
+    align-self: flex-start;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+}
+.researchItem2:hover .lab_btn {
+    background: #fff;
+    color: #fc3329;
+    border-color: #fff;
+}
+.researchItem2 .lab_btn span, .researchItem2 .lab_btn i {
+    transition: color 0.3s;
+}
+.researchItem2:hover .lab_btn span, .researchItem2:hover .lab_btn i {
+    color: #fc3329;
+}
+/* Annual Report下载按钮样式 */
+.ctaSection03 .lab_btn {
+    background: #02113f;
+    color: #fff;
+    border: 2px solid #02113f;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+}
+.ctaSection03 .lab_btn span {
+    color: #fff;
+    transition: color 0.3s;
+}
+.ctaSection03 .lab_btn:hover {
+    background: #fff;
+    color: #fc3329;
+    border: none;
+}
+.ctaSection03 .lab_btn:hover span {
+    color: #fc3329;
+}
+@media (max-width: 991px) {
+    .researchItem2 {
+        min-height: 360px;
+    }
+}
+</style>
+    </head>
+    <body>
+        <!-- Preloader -->
+        <div class="preloader clock text-center">
+            <div class="labfloxLoader">
+                <div class="loaderO">
+                    <span>A</span>
+                    <span>I</span>
+                    <span>D</span>
+                    <span>A</span>
+                    <span>C</span>
+                </div>
+            </div>
+        </div>
+        <!-- Header Start -->
+        <header class="header01 isSticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="navArea">
+                            <div class="logo">
+                                <a href="index.html"><img src="/assets/images/logo.png" alt="Labflox"/></a>
+                            </div>
+                            <nav class="mainMenu">
+                                <ul>
+                                    <li>
+                                        <a href="index.html"><strong>Home</strong></a>
+                                    </li>
+                                    <li class="current-menu-item">
+                                        <a href="research.html"><strong>Research</strong></a>
+                                    </li>
+                                    <li><a href="team.html"><strong>People</strong></a></li>
+                                    <li><a href="gallery.html"><strong>Case Studies</strong></a></li>
+                                    <li><a href="contact-us.html"><strong>Contact</strong></a></li>
+                                </ul>
+                            </nav>
+                            <div class="accessNav">
+                                <div class="phoneCall">
+                                    <i class="fa fa-phone"></i>
+                                    <span>24/7 Emergency Phone</span>
+                                    <h6>+36 55 540 069</h6>
+                                </div>
+                                <a href="appointment.html" class="lab_btn lightHover requestBTN"><span><i class="fa fa-calendar-plus-o"></i>Request Appointment</span></a>
+                                <a href="javascript:void(0);" class="menuBtn"><span><i class="fa fa-bars"></i>Menu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header End -->
+
+        <!-- Page Banner Start -->
+        <section class="pageBanner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-lg-7 col-xl-6">
+                        <div class="pageBannerContent">
+                            <h5>Research</h5>
+                            <h2 class="cursor-highlight-target">We are a AI-powered engineering research lab. </h2>
+                            <div class="pageBreadCum">
+                                <a href="index.html">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                                <span>Researches</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page Banner End -->
+
+        <!-- Research Section Star -->
+        <section class="researchSection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-Yk7aBo01"></i>
+                            <h3><a href="javascript:void(0);">Efficient Antenna Optimization Method</a></h3>
+                            <p>
+                                "An Efficient Method for Antenna Design Optimization Based on Evolutionary Computation and Machine Learning Techniques                    "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-lHEkBa01"></i>
+                            <h3><a href="javascript:void(0);">Generalized Antenna Design Framework</a></h3>
+                            <p>
+                                "SADEA-II: A Generalized Method for Efficient Global Optimization of Antenna Design                                                       "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-F4W0Q01"></i>
+                            <h3><a href="javascript:void(0);">Parallel Surrogate Optimization Approach</a></h3>
+                            <p>
+                                "A Parallel Surrogate Model Assisted Evolutionary Algorithm for Electromagnetic Design Optimization                                       "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-MjY3z001"></i>
+                            <h3><a href="javascript:void(0);">Adaptive Surrogate for Antennas</a></h3>
+                            <p>
+                                "SADEA-III: An Efficient Method for Complex Antenna Design Based on a Self-Adaptive Surrogate Model Assisted Optimization Technique       "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-Yk7aBo01"></i>
+                            <h3><a href="javascript:void(0);">Bayesian Surrogate Antenna Design</a></h3>
+                            <p>
+                                "SADEA: An Efficient Method for Antenna Design Based on a Self-Adaptive Bayesian Neural Network Assisted Global Optimization Technique"
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-lHEkBa01"></i>
+                            <h3><a href="javascript:void(0);">Yield Optimization for Filters</a></h3>
+                            <p>
+                                "A Microwave Filter Yield Optimization Method Based on Off-Line Surrogate Model-Assisted Evolutionary Algorithm                            "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-F4W0Q01"></i>
+                            <h3><a href="javascript:void(0);">Universal Coupling Matrix Method</a></h3>
+                            <p> 
+                                "A General Coupling Matrix Synthesis Method for All-Resonator Diplexers and Multiplexers                                                   "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-MjY3z001"></i>
+                            <h3><a href="javascript:void(0);">Software Solutions for Antennas</a></h3>
+                            <p>
+                                "Software Solutions for Antenna Design Exploration: A Comparison of Packages, Tools, Techniques, and Algorithms for Various Design Challenges"
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="researchItem2">
+                            <i class="laf-Yk7aBo01"></i>
+                            <h3><a href="javascript:void(0);">Parallel Optimization in EM Design</a></h3>
+                            <p>
+                                "A Parallel Surrogate Model Assisted Evolutionary Algorithm for Electromagnetic Design Optimization                                         "
+                            </p>
+                            <a href="javascript:void(0);" class="lab_btn"><span><i class="fa fa-long-arrow-right"></i>Read More</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Research Section End -->
+        
+        <!-- CTA Section Start -->
+        <section class="ctaSection03">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ctaContent2">
+                            <p>Downlaod Annual Research</p>
+                            <h2 class="cursor-highlight-target">A generalized method for efficient global optimization of antenna design</h2>
+                            <a href="#" class="lab_btn"><span>Download Here</span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="imgDiv4">
+                            <img src="/assets/images/research/6.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section End -->
+        
+        <!-- Researc Box End -->
+        <section class="researchBoxSection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="imageBox01">
+                            <img src="/assets/images/research/6.jpg" alt="Labflox"/>
+                            <div class="imgBoxContent">
+                                <h3>Our all Researchers</h3>
+                                <p>
+                                    Our qualified and ardent team of technologists provide benefits of the research we fund 
+                                </p>
+                                <a href="#" class="lab_link">Meet Our Researchers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="imageBox01">
+                            <img src="/assets/images/research/7.jpg" alt="Labflox"/>
+                            <div class="imgBoxContent">
+                                <h3>Our research <br/>area</h3>
+                                <p>
+                                    Our qualified and ardent team of technologists provide benefits of the research we fund 
+                                </p>
+                                <a href="#" class="lab_link">Dsicover Research Area</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Researc Box End -->
+
+        <!-- Section Start -->
+        <footer class="footer01">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="subscribeForm">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="sfLeft">
+                                        <!--<i class="laf-CaWRfT01"></i>-->
+                                        <img src="/assets/images/icons/1.png" alt=""/>
+                                        <h3>
+                                            Get latest updates Subscribe 
+                                            to Our Newsletter
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <form method="post" action="#">
+                                        <input type="email" name="email" placeholder="Your Mail Address"/>
+                                        <button type="submit">Subscribe Now</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row widgetRow">
+                    <div class="col-md-6 col-lg-3">
+                        <aside class="widget">
+                            <div class="contactWidtetContent">
+                                <div class="footerLogo">
+                                    <a href="index.html"><img src="/assets/images/logo.png" alt="LabFlox"/></a>
+                                </div>
+                                <div class="cwcInfo">
+                                    <i class="laf-y4LP01"></i>
+                                    +91 458 654 528
+                                </div>
+                                <div class="cwcInfo">
+                                    <i class="laf-BqBcxz01"></i>
+                                    <a href="javascript:void(0);">info@example.com</a>
+                                </div>
+                                <div class="cwcInfo">
+                                    <i class="laf-A8AIr201"></i>
+                                    60 East 65th Street, NY
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <aside class="widget">
+                            <h3 class="widgetTitle">Our Pathology</h3>
+                            <ul>
+                                <li><a href="javascript:void(0);">Molecular Diagnostics</a></li>
+                                <li><a href="javascript:void(0);">Molecular Hematology</a></li>
+                                <li><a href="javascript:void(0);">Microbiology</a></li>
+                                <li><a href="javascript:void(0);">Transfusion Medicine</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <aside class="widget">
+                            <h3 class="widgetTitle">Services</h3>
+                            <ul>
+                                <li><a href="javascript:void(0);">Complete Blood Count</a></li> 
+                                <li><a href="javascript:void(0);">Comprehensive Metabolic Panel</a></li>
+                                <li><a href="javascript:void(0);">Cholesterol / Lipid Levels</a></li>
+                                <li><a href="javascript:void(0);">Liver Function Blood Test</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <aside class="widget">
+                            <h3 class="widgetTitle">Preparation tips</h3>
+                            <ul>
+                                <li><a href="javascript:void(0);">Before Your Blood Test</a></li>
+                                <li><a href="javascript:void(0);">What to Expect During the Draw</a></li>
+                                <li><a href="javascript:void(0);">Microbiology</a></li>
+                                <li><a href="javascript:void(0);">Transfusion Medicine</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyrightRow">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="siteInfo">© 2025 AIDAC All rights reserved.</div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="siteSocial">
+                                        <a href="javascript:void(0);"><i class="fa fa-facebook-square"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa fa-pinterest"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa fa-github"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Section End -->
+
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" id="backtotop"><i class="fa fa-angle-double-up"></i></a>
+        <!-- Back To Top -->
+
+        <!-- Start Include All JS -->
+        <script src="../scripts/js/jquery.js"></script>
+        <script src="../scripts/js/bootstrap.min.js"></script>
+        <script src="../scripts/js/owl.carousel.min.js"></script>
+        <script src="../scripts/js/jquery.appear.js"></script>
+        <script src="../scripts/js/circle-progress.min.js"></script>
+        <script src="../scripts/js/slick.js"></script>
+        <script src="../scripts/js/lightcase.js"></script>
+        <script src="../scripts/js/litepicker.js"></script>
+        
+        <!-- Slider Revolution Main Files -->
+        <script src="../scripts/js/jquery.themepunch.tools.min.js"></script>
+        <script src="../scripts/js/jquery.themepunch.revolution.min.js"></script>
+
+        <!-- Slider Revolution Extension -->
+        <script src="../scripts/js/extensions/revolution.extension.actions.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.carousel.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.kenburn.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.migration.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.navigation.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.parallax.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.video.min.js"></script>
+
+        <script src="../scripts/js/theme.js"></script>
+        <script src="../scripts/js/cursor-highlight.js"></script>
+        <!-- End Include All JS -->
+    </body>
+</html>
