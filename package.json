@@ -1,0 +1,12 @@
+{
+  "name": "aidac-website",
+  "version": "1.0.0",
+  "description": "AIDAC Laboratory Website",
+  "scripts": {
+    "build": "node deploy-setup.js",
+    "dev": "npx serve public"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
