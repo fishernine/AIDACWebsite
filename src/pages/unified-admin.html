@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="AIDAC Unified Admin - Manage all content types">
+        <meta name="keywords" content="AIDAC, Admin, Management, Research, Events, Case Studies">
+        <meta name="author" content="AIDAC">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AIDAC - Unified Content Management</title>
+
+        <!-- Start Include All CSS -->
+        <link rel="stylesheet" href="../styles/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../styles/css/animate.css"/>
+        <link rel="stylesheet" href="../styles/css/font-awesome.css"/>
+        <link rel="stylesheet" href="../styles/css/labflox-icon.css"/>
+        <link rel="stylesheet" href="../styles/css/owl.theme.default.min.css"/>
+        <link rel="stylesheet" href="../styles/css/owl.carousel.min.css"/>
+        <link rel="stylesheet" href="../styles/css/slick.css">
+        <link rel="stylesheet" href="../styles/css/lightcase.css"/>
+        <link rel="stylesheet" href="../styles/css/preloader.css"/>
+
+        <!-- Revolution Slider Setting CSS -->
+        <link rel="stylesheet" href="../styles/css/settings.css">
+
+        <link rel="stylesheet" href="../styles/css/preset.css"/>
+        <link rel="stylesheet" href="../styles/css/ignore_for_wp.css"/>
+        <link rel="stylesheet" href="../styles/css/theme.css"/>
+        <link rel="stylesheet" href="../styles/css/responsive.css"/>
+        <!-- End Include All CSS -->
+
+        <!-- Favicon Icon -->
+        <link rel="icon"  type="image/png" href="../assets/images/favicon.png">
+        <!-- Favicon Icon -->
+        
+        <style>
+        .admin-container {
+            padding: 50px 0;
+        }
+        
+        .admin-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .admin-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #fc3329;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px 15px;
+            width: 100%;
+        }
+        
+        .form-control:focus {
+            border-color: #fc3329;
+            box-shadow: 0 0 0 0.2rem rgba(252, 51, 41, 0.25);
+        }
+        
+        .btn-primary {
+            background: #fc3329;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .nav-tabs {
+            border-bottom: 2px solid #fc3329;
+            margin-bottom: 30px;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: #666;
+            font-weight: 600;
+            padding: 15px 25px;
+            margin-right: 5px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background: #fc3329;
+            color: white;
+            border: none;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            border: none;
+            background: #e62e24;
+            color: white;
+        }
+        
+        .content-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #fc3329;
+        }
+        
+        .content-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .content-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .content-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fc3329;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        .export-import {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tab-content {
+            min-height: 400px;
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .form-section h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        </style>
+    </head>
+    <body>
+        <!-- Preloader -->
+        <div class="preloader clock text-center">
+            <div class="labfloxLoader">
+                <div class="loaderO">
+                    <span>A</span>
+                    <span>I</span>
+                    <span>D</span>
+                    <span>A</span>
+                    <span>C</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Header will be loaded by header-loader.js -->
+
+        <!-- Page Banner Start -->
+        <section class="pageBanner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-lg-7 col-xl-6">
+                        <div class="pageBannerContent">
+                            <h5>Content Management</h5>
+                            <h2>Unified Content Administration</h2>
+                            <div class="pageBreadCum">
+                                <a href="index.html">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                                <span>Admin Panel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page Banner End -->
+
+        <!-- Admin Content Start -->
+        <section class="admin-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Navigation Tabs -->
+                        <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="research-tab" data-bs-toggle="tab" data-bs-target="#research" type="button" role="tab" aria-controls="research" aria-selected="true">
+                                    <i class="fa fa-flask"></i> Research Papers
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events" type="button" role="tab" aria-controls="events" aria-selected="false">
+                                    <i class="fa fa-calendar"></i> Events
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="cases-tab" data-bs-toggle="tab" data-bs-target="#cases" type="button" role="tab" aria-controls="cases" aria-selected="false">
+                                    <i class="fa fa-briefcase"></i> Case Studies
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contacts-tab" data-bs-toggle="tab" data-bs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">
+                                    <i class="fa fa-envelope"></i> Contact Submissions
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button" role="tab" aria-controls="stats" aria-selected="false">
+                                    <i class="fa fa-chart-bar"></i> Statistics
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="adminTabContent">
+                            <!-- Research Papers Tab -->
+                            <div class="tab-pane fade show active" id="research" role="tabpanel" aria-labelledby="research-tab">
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-plus"></i> Add New Research Paper</h3>
+                                    <div id="researchAlert"></div>
+                                    <form id="researchForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="researchTitle">Paper Title *</label>
+                                                    <input type="text" id="researchTitle" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="researchAuthor">Author *</label>
+                                                    <input type="text" id="researchAuthor" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="researchCategory">Category *</label>
+                                                    <select id="researchCategory" class="form-control" required>
+                                                        <option value="">Select Category</option>
+                                                        <option value="Antenna">Antenna</option>
+                                                        <option value="Filter">Filter</option>
+                                                        <option value="Analog IC">Analog IC</option>
+                                                        <option value="RFIC">RFIC</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="researchJournal">Journal *</label>
+                                                    <input type="text" id="researchJournal" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="researchYear">Year *</label>
+                                                    <input type="number" id="researchYear" class="form-control" min="2000" max="2030" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="researchCitations">Citations</label>
+                                                    <input type="number" id="researchCitations" class="form-control" min="0" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="researchImage">Image Path</label>
+                                                    <input type="text" id="researchImage" class="form-control" placeholder="../assets/images/research/1.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="researchOfficialLink">Official Link (IEEE, SCI, etc.)</label>
+                                            <input type="url" id="researchOfficialLink" class="form-control" placeholder="https://ieeexplore.ieee.org/document/...">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="researchAbstract">Abstract *</label>
+                                            <textarea id="researchAbstract" class="form-control" rows="4" required></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="researchTags">Tags (comma separated)</label>
+                                            <input type="text" id="researchTags" class="form-control" placeholder="5G, Filter, Microwave">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Add Research Paper</button>
+                                        <button type="button" class="btn btn-secondary" onclick="resetResearchForm()">Reset</button>
+                                    </form>
+                                </div>
+                                
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-list"></i> Current Research Papers</h3>
+                                    <div id="researchList">
+                                        <!-- Research papers will be loaded here -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Events Tab -->
+                            <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-plus"></i> Add New Event</h3>
+                                    <div id="eventsAlert"></div>
+                                    <form id="eventsForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="eventTitle">Event Title *</label>
+                                                    <input type="text" id="eventTitle" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="eventDate">Event Date *</label>
+                                                    <input type="date" id="eventDate" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="eventLocation">Location *</label>
+                                                    <input type="text" id="eventLocation" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="eventType">Event Type *</label>
+                                                    <select id="eventType" class="form-control" required>
+                                                        <option value="">Select Type</option>
+                                                        <option value="Conference">Conference</option>
+                                                        <option value="Workshop">Workshop</option>
+                                                        <option value="Symposium">Symposium</option>
+                                                        <option value="Webinar">Webinar</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="eventAttendees">Attendees</label>
+                                                    <input type="text" id="eventAttendees" class="form-control" placeholder="100+ Attendees">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="eventImage">Image Path</label>
+                                            <input type="text" id="eventImage" class="form-control" placeholder="../assets/images/news/1.png">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="eventDescription">Description *</label>
+                                            <textarea id="eventDescription" class="form-control" rows="3" required></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="eventTags">Tags (comma separated)</label>
+                                            <input type="text" id="eventTags" class="form-control" placeholder="antenna, research, technology">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Add Event</button>
+                                        <button type="button" class="btn btn-secondary" onclick="resetEventsForm()">Reset</button>
+                                    </form>
+                                </div>
+                                
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-list"></i> Current Events</h3>
+                                    <div id="eventsList">
+                                        <!-- Events will be loaded here -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Case Studies Tab -->
+                            <div class="tab-pane fade" id="cases" role="tabpanel" aria-labelledby="cases-tab">
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-plus"></i> Add New Case Study</h3>
+                                    <div id="casesAlert"></div>
+                                    <form id="casesForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="caseTitle">Case Study Title *</label>
+                                                    <input type="text" id="caseTitle" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="caseCategory">Category *</label>
+                                                    <select id="caseCategory" class="form-control" required>
+                                                        <option value="">Select Category</option>
+                                                        <option value="Antenna Design">Antenna Design</option>
+                                                        <option value="RF Engineering">RF Engineering</option>
+                                                        <option value="AI Engineering">AI Engineering</option>
+                                                        <option value="Circuit Design">Circuit Design</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="caseDate">Date *</label>
+                                                    <input type="date" id="caseDate" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="caseTeam">Team *</label>
+                                                    <input type="text" id="caseTeam" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="caseSubtitle">Subtitle *</label>
+                                            <input type="text" id="caseSubtitle" class="form-control" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="caseContent">Content *</label>
+                                            <textarea id="caseContent" class="form-control" rows="6" required></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="caseTags">Tags (comma separated)</label>
+                                            <input type="text" id="caseTags" class="form-control" placeholder="antenna, ai, optimization">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Add Case Study</button>
+                                        <button type="button" class="btn btn-secondary" onclick="resetCasesForm()">Reset</button>
+                                    </form>
+                                </div>
+                                
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-list"></i> Current Case Studies</h3>
+                                    <div id="casesList">
+                                        <!-- Case studies will be loaded here -->
+                                    </div>
+                                                             </div>
+                         </div>
+ 
+                         <!-- Contact Submissions Tab -->
+                         <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                             <div class="admin-section">
+                                 <h3><i class="fa fa-envelope"></i> Contact Form Submissions</h3>
+                                 <p>Manage contact form submissions from the website.</p>
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <label>Status Filter:</label>
+                                             <select id="contactStatusFilter" class="form-control">
+                                                 <option value="">All Status</option>
+                                                 <option value="new">New</option>
+                                                 <option value="reviewed">Reviewed</option>
+                                                 <option value="replied">Replied</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <label>Subject Filter:</label>
+                                             <select id="contactSubjectFilter" class="form-control">
+                                                 <option value="">All Subjects</option>
+                                                 <option value="General Inquiry">General Inquiry</option>
+                                                 <option value="Research Collaboration">Research Collaboration</option>
+                                                 <option value="Student Inquiry">Student Inquiry</option>
+                                                 <option value="Partnership Opportunity">Partnership Opportunity</option>
+                                                 <option value="Technical Support">Technical Support</option>
+                                                 <option value="Other">Other</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Search:</label>
+                                     <input type="text" id="contactSearchFilter" class="form-control" placeholder="Search by name, email, or message...">
+                                 </div>
+                                 <button class="btn btn-primary" onclick="applyContactFilters()">
+                                     <i class="fa fa-search"></i> Apply Filters
+                                 </button>
+                                 <button class="btn btn-secondary" onclick="exportContactData()">
+                                     <i class="fa fa-download"></i> Export Contact Data
+                                 </button>
+                                 <div id="contactSubmissionsList" style="margin-top: 20px;">
+                                     <!-- Contact submissions will be loaded here -->
+                                 </div>
+                             </div>
+                         </div>
+ 
+                         <!-- Statistics Tab -->
+                         <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-chart-bar"></i> Content Statistics</h3>
+                                    <div id="statsContent">
+                                        <!-- Statistics will be loaded here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="admin-section">
+                                    <h3><i class="fa fa-download"></i> Data Management</h3>
+                                    <p>Export or import content data.</p>
+                                    <div class="export-import">
+                                        <button class="btn btn-primary" onclick="exportAllData()">
+                                            <i class="fa fa-download"></i> Export All Data
+                                        </button>
+                                        <button class="btn btn-secondary" onclick="importAllData()">
+                                            <i class="fa fa-upload"></i> Import All Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Admin Content End -->
+
+        <!-- Footer will be loaded by footer-loader.js -->
+        
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" id="backtotop"><i class="fa fa-angle-double-up"></i></a>
+        <!-- Back To Top -->
+
+        <!-- Start Include All JS -->
+        <script src="../scripts/js/jquery.js"></script>
+        <script src="../scripts/js/bootstrap.min.js"></script>
+        <script src="../scripts/js/owl.carousel.min.js"></script>
+        <script src="../scripts/js/jquery.appear.js"></script>
+        <script src="../scripts/js/circle-progress.min.js"></script>
+        <script src="../scripts/js/slick.js"></script>
+        <script src="../scripts/js/lightcase.js"></script>
+        <script src="../scripts/js/litepicker.js"></script>
+        
+        <!-- Slider Revolution Main Files -->
+        <script src="../scripts/js/jquery.themepunch.tools.min.js"></script>
+        <script src="../scripts/js/jquery.themepunch.revolution.min.js"></script>
+
+        <!-- Slider Revolution Extension -->
+        <script src="../scripts/js/extensions/revolution.extension.actions.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.carousel.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.kenburn.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.migration.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.navigation.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.parallax.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script src="../scripts/js/extensions/revolution.extension.video.min.js"></script>
+
+        <script src="../scripts/js/theme.js"></script>
+        
+        <!-- Component Loaders -->
+        <script src="../scripts/js/header-loader.js"></script>
+        <script src="../scripts/js/footer-loader.js"></script>
+        
+                 <!-- All Data Files -->
+         <script src="../scripts/js/research-data.js"></script>
+         <script src="../scripts/js/events-data.js"></script>
+         <script src="../scripts/js/cases-data.js"></script>
+         
+         <!-- Contact Form Handler -->
+         <script src="../scripts/js/contact-form-handler.js"></script>
+         
+         <!-- Unified Admin Script -->
+         <script src="../scripts/js/unified-admin.js"></script>
+        <!-- End Include All JS -->
+    </body>
+</html> 

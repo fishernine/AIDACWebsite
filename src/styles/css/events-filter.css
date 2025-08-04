@@ -1,0 +1,144 @@
+/* Events Filter Styles */
+
+/* Event Tags 筛选功能样式 */
+.event-tag {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px;
+    background: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.event-tag:hover {
+    background: #fc3329;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(252, 51, 41, 0.3);
+}
+
+.event-tag.active {
+    background: #fc3329;
+    color: #fff;
+    border-color: #fc3329;
+    box-shadow: 0 4px 8px rgba(252, 51, 41, 0.3);
+}
+
+/* 事件卡片筛选动画 */
+.newsItem {
+    transition: all 0.4s ease;
+}
+
+.newsItem.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.newsItem.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 筛选结果提示 */
+.filter-results {
+    text-align: center;
+    margin: 20px 0;
+    font-style: italic;
+    color: #666;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #fc3329;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .event-tag {
+        padding: 6px 12px;
+        font-size: 12px;
+        margin: 2px;
+    }
+    
+    .filter-results {
+        margin: 15px 0;
+        font-size: 14px;
+    }
+}
+
+/* 标签容器样式优化 */
+.tagcloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* 标签悬停时的额外效果 */
+.event-tag:hover {
+    background: #fc3329;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(252, 51, 41, 0.3);
+    border-color: #fc3329;
+}
+
+/* 激活状态的额外样式 */
+.event-tag.active {
+    background: #fc3329;
+    color: #fff;
+    border-color: #fc3329;
+    box-shadow: 0 4px 8px rgba(252, 51, 41, 0.3);
+    font-weight: 600;
+}
+
+/* 触摸设备支持 */
+.event-tag.touch-active {
+    background: #e62d1d;
+    transform: scale(0.95);
+}
+
+/* 无障碍支持 */
+.event-tag:focus {
+    outline: 2px solid #fc3329;
+    outline-offset: 2px;
+}
+
+/* 卡片筛选时的布局优化 */
+.newsItem.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.newsItem.visible {
+    opacity: 1;
+    transform: scale(1);
+    height: auto;
+    overflow: visible;
+}
+
+/* 筛选结果提示的动画 */
+.filter-results {
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 

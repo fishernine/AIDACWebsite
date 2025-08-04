@@ -11,16 +11,14 @@
 ├── src/                    # 源代码
 │   ├── assets/             # 静态资源（图片、字体、Lottie JSON等）
 │   ├── styles/             # 所有 CSS 文件
-│   │   ├── base.css        # 浏览器重置、基础规则
-│   │   ├── layout.css      # 布局相关样式
-│   │   ├── components.css  # 组件样式（按钮、卡片等）
-│   │   └── animations.css  # 自定义动画类（非 GSAP/Lenis）
+│   │   
+│   │   
 │   ├── scripts/            # JavaScript 动画、交互控制逻辑
-│   │   ├── gsap.js
-│   │   ├── lenis.js
-│   │   └── lottie.js
+│   │  
+│   │  
+│   │  
 │   ├── pages/              # 各个页面（html为主）
-│   │   └── index.html
+│   │  
 │   └── components/         # 页面中可复用的HTML片段（如footer.html）
 │
 ├── .cursor/                # Cursor 编辑器配置文件夹

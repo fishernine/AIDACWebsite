@@ -64,6 +64,11 @@
     box-shadow: 0 0 35px rgba(0, 0, 0, .2);
     border: none;
 }
+
+/* 为固定导航栏添加页面内容间距 */
+body.header-fixed {
+    padding-top: 80px; /* 当导航栏固定时，为内容添加间距 */
+}
 .header02.fixedHeader{
     background: #FFF;
 }
