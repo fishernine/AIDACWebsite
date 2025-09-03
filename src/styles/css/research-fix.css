@@ -1,0 +1,83 @@
+/* Research Item 文字显示修复样式 */
+/* 确保"We collaborate with academia and industry"部分的卡片文字始终可见 */
+/* 保持原有样式不变，只修复文字显示问题 */
+
+/* 基础修复 - 只修复overflow问题，不改变样式 */
+.researchSlider {
+    overflow: visible !important;
+}
+
+.researchSlider .owl-stage {
+    overflow: visible !important;
+}
+
+.researchSlider .owl-item {
+    overflow: visible !important;
+}
+
+/* 确保文字内容始终可见，但不改变原有样式 */
+.riContent {
+    overflow: visible !important;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.ricMeta {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+.riContent h3 {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-wrap: break-word !important;
+}
+
+/* 确保轮播动画不影响文字显示 */
+.researchSlider .owl-item.active .researchItem,
+.researchSlider .owl-item .researchItem {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 修复可能的z-index问题，确保文字在最上层 */
+.riContent {
+    z-index: 3 !important;
+}
+
+/* 响应式修复 - 只修复文字显示，不改变样式 */
+@media (max-width: 767px) {
+    .riContent {
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+    
+    .ricMeta {
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+    
+    .riContent h3 {
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .riContent {
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+    
+    .ricMeta {
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+    
+    .riContent h3 {
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+}

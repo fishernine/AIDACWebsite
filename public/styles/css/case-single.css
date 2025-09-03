@@ -122,4 +122,156 @@
     .labGallerySlider {
         height: 300px;
     }
+}
+
+/* Case Study Engagement Section - Simple Orange Theme */
+.caseEngagement {
+    background: white;
+    border: 2px solid #fc3329;
+    padding: 40px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Engagement Actions */
+.engagementActions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.engagementBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: white;
+    border: 2px solid #fc3329;
+    color: #fc3329;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.engagementBtn:hover {
+    background: #fc3329;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.engagementBtn.active {
+    background: #fc3329;
+    color: white;
+}
+
+.engagementBtn i {
+    font-size: 16px;
+}
+
+/* Comment Form */
+.commentForm {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.commentForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.commentForm textarea {
+    padding: 15px;
+    border: 2px solid #e1e1e1;
+    background: #fafafa;
+    font-size: 14px;
+    color: #1c1c1c;
+    transition: all 0.3s ease;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.commentForm textarea:focus {
+    outline: none;
+    border-color: #fc3329;
+    background: white;
+}
+
+.commentForm textarea::placeholder {
+    color: #999;
+}
+
+.submitBtn {
+    background: #fc3329;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+}
+
+.submitBtn:hover {
+    background: #e62e26;
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .caseEngagement {
+        padding: 30px 20px;
+    }
+    
+    .engagementActions {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .engagementBtn {
+        width: 180px;
+        justify-content: center;
+    }
+    
+
+}
+
+/* Toast Notification - Orange Theme */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #fc3329;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 0;
+    box-shadow: 0 8px 25px rgba(252, 51, 41, 0.3);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid #fc3329;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+.toast-notification i {
+    font-size: 18px;
+    color: #fff;
 } 

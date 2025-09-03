@@ -18,10 +18,17 @@ class CasesRenderer {
     // 渲染案例列表
     renderCases(searchQuery = '') {
         this.searchQuery = searchQuery;
-        this.currentPage = 1;
         
         let casesToRender = CASES_DATA.getAllCases();
+        console.log('Total cases loaded:', casesToRender.length);
         
+        // 根据分类筛选
+        if (this.currentFilter && this.currentFilter !== 'all') {
+            casesToRender = casesToRender.filter(caseStudy => 
+                caseStudy.category === this.currentFilter
+            );
+        }
+
         // 根据搜索查询筛选
         if (searchQuery) {
             casesToRender = casesToRender.filter(caseStudy => 
@@ -36,19 +43,33 @@ class CasesRenderer {
         const startIndex = (this.currentPage - 1) * this.casesPerPage;
         const endIndex = startIndex + this.casesPerPage;
         const casesForCurrentPage = casesToRender.slice(startIndex, endIndex);
+        
+        console.log('Render cases:', {
+            currentPage: this.currentPage,
+            casesPerPage: this.casesPerPage,
+            startIndex: startIndex,
+            endIndex: endIndex,
+            totalCases: casesToRender.length,
+            casesForCurrentPage: casesForCurrentPage.length
+        });
 
         const container = document.querySelector('.col-lg-8');
-        if (!container) {
-            console.error('Cases container not found');
-            return;
+        if (!container) return;
+
+        // 创建案例内容容器
+        let casesContainer = container.querySelector('.cases-container');
+        if (!casesContainer) {
+            casesContainer = document.createElement('div');
+            casesContainer.className = 'cases-container';
+            container.insertBefore(casesContainer, container.querySelector('.labPagination'));
         }
 
-        // 清空现有内容
-        container.innerHTML = '';
+        // 清空案例内容
+        casesContainer.innerHTML = '';
 
         // 渲染案例卡片
         if (casesForCurrentPage.length === 0) {
-            container.innerHTML = `
+            casesContainer.innerHTML = `
                 <div class="col-12">
                     <div class="no-results">
                         <h3>No case studies found</h3>
@@ -59,7 +80,7 @@ class CasesRenderer {
         } else {
             casesForCurrentPage.forEach(caseStudy => {
                 const caseHTML = this.createCaseCard(caseStudy);
-                container.innerHTML += caseHTML;
+                casesContainer.innerHTML += caseHTML;
             });
         }
 
@@ -117,22 +138,34 @@ class CasesRenderer {
 
     // 创建案例卡片HTML
     createCaseCard(caseStudy) {
-        const dateInfo = CASES_DATA.formatDate(caseStudy.date);
+        // 处理日期信息 - 新数据结构可能没有date字段
+        let dateInfo = null;
+        if (caseStudy.date) {
+            dateInfo = CASES_DATA.formatDate(caseStudy.date);
+        }
+        
+        // 处理团队信息 - 新数据结构可能没有team字段
+        const team = caseStudy.team || caseStudy.subtitle || 'AIDAC Team';
+        
+        // 处理年份 - 新数据结构可能没有date字段
+        const year = caseStudy.date ? caseStudy.date.split('-')[0] : '2024';
         
         return `
             <div class="newsItem niList" data-tags="${caseStudy.tags.join(',')}" data-case-id="${caseStudy.id}">
                 <div class="niThumb">
-                    <img src="${caseStudy.images[0]}" alt="AIDAC"/>
+                    <img src="${caseStudy.images[0]}" alt="${caseStudy.title}"/>
                 </div>
                 <div class="niDetails">
+                    ${dateInfo ? `
                     <div class="niDate roboto">
                         <span>${dateInfo.day}</span>
                         <span>${dateInfo.month}</span>
                     </div>
+                    ` : ''}
                     <div class="niMeta">
                         <span><i class="fa fa-tags"></i><a href="javascript:void(0);">${caseStudy.category}</a></span>
-                        <span><i class="fa fa-user"></i><a href="javascript:void(0);">${caseStudy.team}</a></span>
-                        <span><i class="fa fa-calendar"></i><a href="javascript:void(0);">${caseStudy.date.split('-')[0]}</a></span>
+                        <span><i class="fa fa-user"></i><a href="javascript:void(0);">${team}</a></span>
+                        <span><i class="fa fa-calendar"></i><a href="javascript:void(0);">${year}</a></span>
                     </div>
                     <h3><a href="case-single.html?id=${caseStudy.id}">${caseStudy.title}</a></h3>
                     <div class="blogExcerpt">
@@ -152,16 +185,18 @@ class CasesRenderer {
         const totalPages = Math.ceil(totalCases / this.casesPerPage);
         const paginationContainer = document.querySelector('.labPagination');
         
+        console.log('Pagination update:', {
+            totalCases: totalCases,
+            casesPerPage: this.casesPerPage,
+            totalPages: totalPages,
+            currentPage: this.currentPage,
+            paginationContainer: paginationContainer
+        });
+        
         if (!paginationContainer) {
-            // 创建分页容器
-            const container = document.querySelector('.col-lg-8');
-            if (container) {
-                container.innerHTML += '<div class="labPagination"></div>';
-            }
+            console.error('Pagination container not found!');
+            return;
         }
-
-        const pagination = document.querySelector('.labPagination');
-        if (!pagination) return;
 
         let paginationHTML = '';
         
@@ -184,22 +219,23 @@ class CasesRenderer {
             paginationHTML += `<a href="#" class="nxt" data-page="${this.currentPage + 1}"><i class="fa fa-angle-right"></i></a>`;
         }
 
-        pagination.innerHTML = paginationHTML;
+        paginationContainer.innerHTML = paginationHTML;
+        console.log('Pagination HTML generated:', paginationHTML);
     }
 
     // 更新结果统计
     updateResultsCount(count) {
         // 可以在这里添加结果统计显示
-        console.log(`Showing ${count} case studies`);
     }
 
     // 设置事件监听器
     setupEventListeners() {
-        // 分页点击事件
+        // 分页点击事件 - 使用箭头函数保持this上下文
         document.addEventListener('click', (e) => {
             if (e.target.closest('.labPagination a')) {
                 e.preventDefault();
                 const page = parseInt(e.target.closest('a').dataset.page);
+                console.log('Pagination clicked:', page, 'Current page:', this.currentPage);
                 this.goToPage(page);
             }
         });
@@ -228,7 +264,7 @@ class CasesRenderer {
 
     // 处理搜索
     handleSearch(query) {
-        this.searchQuery = query;
+        this.currentPage = 1; // 搜索时重置到第一页
         this.renderCases(query);
     }
 
@@ -241,49 +277,18 @@ class CasesRenderer {
         document.querySelector(`[data-tag="${category}"]`).classList.add('active');
 
         // 筛选案例
-        let casesToRender = CASES_DATA.getAllCases();
-        
-        if (category !== 'all') {
-            casesToRender = CASES_DATA.getCasesByCategory(category);
-        }
-
-        // 重新渲染
-        this.renderFilteredCases(casesToRender);
+        this.currentFilter = category;
+        this.currentPage = 1; // 筛选时重置到第一页
+        this.renderCases(this.searchQuery);
     }
 
-    // 渲染筛选后的案例
-    renderFilteredCases(cases) {
-        const container = document.querySelector('.col-lg-8');
-        if (!container) return;
 
-        container.innerHTML = '';
-
-        if (cases.length === 0) {
-            container.innerHTML = `
-                <div class="col-12">
-                    <div class="no-results">
-                        <h3>No case studies found</h3>
-                        <p>Try selecting a different category.</p>
-                    </div>
-                </div>
-            `;
-        } else {
-            cases.forEach(caseStudy => {
-                const caseHTML = this.createCaseCard(caseStudy);
-                container.innerHTML += caseHTML;
-            });
-        }
-
-        // 隐藏分页（筛选模式下）
-        const paginationContainer = document.querySelector('.labPagination');
-        if (paginationContainer) {
-            paginationContainer.style.display = 'none';
-        }
-    }
 
     // 跳转到指定页面
     goToPage(page) {
+        console.log('goToPage called:', page, 'Current page before:', this.currentPage);
         this.currentPage = page;
+        console.log('Current page after:', this.currentPage);
         this.renderCases(this.searchQuery);
         
         // 滚动到页面顶部

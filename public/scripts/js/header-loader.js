@@ -40,15 +40,15 @@ class HeaderLoader {
                             <li class="current-menu-item">
                                 <a href="index.html">Home</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="javascript:void(0);">Research</a>
-                                <ul>
-                                    <li><a href="research-antenna.html">Antenna</a></li>
-                                    <li><a href="research-filter.html">Filter</a></li>
-                                    <li><a href="research-analog-ic.html">Analog IC</a></li>
-                                    <li><a href="research-rfic.html">RFIC</a></li>
-                                </ul>
-                            </li>
+                                                    <li class="menu-item-has-children">
+                            <a href="javascript:void(0);">Research</a>
+                            <ul>
+                                <li><a href="../pages/research.html?tag=antenna">Antenna</a></li>
+                                <li><a href="../pages/research.html?tag=filter">Filter</a></li>
+                                <li><a href="../pages/research.html?tag=analog ic">Analog IC</a></li>
+                                <li><a href="../pages/research.html?tag=rfic">RFIC</a></li>
+                            </ul>
+                        </li>
                             <li><a href="blog-grid-lsb.html">Event</a></li>
                             <li><a href="blog-list-rsb.html">Case Studies</a></li>
                             <li><a href="appointment.html">Contact</a></li>

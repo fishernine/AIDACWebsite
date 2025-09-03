@@ -19,38 +19,69 @@ class ResearchRenderer {
     getFilterFromURL() {
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get('category');
-        if (category) {
+        const tag = urlParams.get('tag');
+        
+        if (tag) {
+            this.currentFilter = tag.toLowerCase();
+        } else if (category) {
             this.currentFilter = category;
         }
     }
 
     // 渲染论文列表
-    renderPapers(filter = null, searchQuery = '') {
-        // 如果传入了filter参数，使用它；否则使用当前filter
+    renderPapers(filter = null, searchQuery = undefined) {
+        // 判断是否需要重置到第一页（当筛选或搜索条件发生变化时）
+        let shouldResetPage = false;
+        
         if (filter !== null) {
+            if (this.currentFilter !== filter) {
+                shouldResetPage = true;
+            }
             this.currentFilter = filter;
         }
         
-        this.searchQuery = searchQuery;
-        this.currentPage = 1;
+        if (typeof searchQuery !== 'undefined') {
+            if (this.searchQuery !== searchQuery) {
+                shouldResetPage = true;
+            }
+            this.searchQuery = searchQuery;
+        }
         
-        let papersToRender = researchPapers;
+        if (shouldResetPage) {
+            this.currentPage = 1;
+        }
         
-        // 根据分类筛选
+        // 规范化数据：修剪 DOI、生成 officialLink（若缺失）、容错 author/journal/tags/image
+        const normalizedPapers = researchPapers.map(p => {
+            const doi = (p.doi || '').trim();
+            const hasOfficial = p.officialLink && /^https?:\/\//i.test(p.officialLink);
+            const officialLink = hasOfficial ? p.officialLink : (doi ? `https://doi.org/${doi}` : '');
+            return {
+                author: p.author || 'Unknown',
+                journal: p.journal || '',
+                tags: Array.isArray(p.tags) ? p.tags : [],
+                image: p.image || '',
+                ...p,
+                doi,
+                officialLink
+            };
+        });
+
+        let papersToRender = normalizedPapers;
+        
+        // 根据标签筛选
         if (this.currentFilter !== 'all') {
-            papersToRender = researchPapers.filter(paper => {
-                const category = paper.category.toLowerCase();
-                return category === this.currentFilter.toLowerCase();
+            papersToRender = normalizedPapers.filter(paper => {
+                return paper.tags.some(tag => tag.toLowerCase() === this.currentFilter.toLowerCase());
             });
         }
 
         // 根据搜索查询筛选
-        if (searchQuery) {
+        if (this.searchQuery) {
             papersToRender = papersToRender.filter(paper => 
-                paper.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                paper.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                paper.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                paper.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+                paper.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                paper.author.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                paper.tags.some(tag => tag.toLowerCase().includes(this.searchQuery.toLowerCase()))
             );
         }
 
@@ -84,23 +115,25 @@ class ResearchRenderer {
 
     // 创建论文卡片HTML
     createPaperCard(paper) {
+        const hasImage = paper.image && paper.image.trim().length > 0;
         return `
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="paperItem">
-                    <div class="piThumb">
-                        <img src="${paper.image}" alt="${paper.title}"/>
-                    </div>
+                    ${hasImage ? `<div class=\"piThumb\"><img src=\"${paper.image}\" alt=\"${paper.title}\"/></div>` : ''}
                     <div class="piDetails">
-                        <div class="piDate">Published: ${paper.year}</div>
-                        <div class="category-badge">${paper.category}</div>
+                        <div class="tags-container">
+                            <span class="piDate">Published: ${paper.year}</span>
+                            ${paper.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join('')}
+                        </div>
                         <div class="piMeta">
                             <span><i class="fa fa-user"></i>${paper.author}</span>
-                            <span><i class="fa fa-calendar"></i>${paper.journal}</span>
+                            ${paper.journal ? `<span><i class=\"fa fa-book\"></i>${paper.journal}</span>` : ''}
+                            ${paper.doi ? `<span><i class=\"fa fa-link\"></i>DOI: ${paper.doi}</span>` : ''}
                         </div>
                         <h3><a href="research-single-dynamic.html?id=${paper.id}">${paper.title}</a></h3>
                         <div class="paperFooter">
-                            <a href="research-single-dynamic.html?id=${paper.id}" class="readMore">Read Abstract<i class="fa fa-arrow-right"></i></a>
-                            <span class="citationCount"><i class="fa fa-quote-left"></i>${paper.citations} Citations</span>
+                            <a href="${paper.officialLink || `research-single-dynamic.html?id=${paper.id}` }" class="readMore" target="_blank">Read Abstract<i class="fa fa-arrow-right"></i></a>
+                            ${paper.doi ? `<span class=\"citationCount\"><i class=\"fa fa-quote-left\"></i>DOI</span>` : ''}
                         </div>
                     </div>
                 </div>

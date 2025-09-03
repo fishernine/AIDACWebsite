@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="AIDAC RFIC Research Papers - Latest publications in radio frequency integrated circuit design">
+        <meta name="keywords" content="Research, Papers, AIDAC, RFIC, Radio Frequency, Integrated Circuit">
+        <meta name="author" content="AIDAC">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AIDAC - RFIC Research Papers</title>
+
+        <!-- Start Include All CSS -->
+        <link rel="stylesheet" href="../styles/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../styles/css/animate.css"/>
+        <link rel="stylesheet" href="../styles/css/font-awesome.css"/>
+        <link rel="stylesheet" href="../styles/css/labflox-icon.css"/>
+        <link rel="stylesheet" href="../styles/css/owl.theme.default.min.css"/>
+        <link rel="stylesheet" href="../styles/css/owl.carousel.min.css"/>
+        <link rel="stylesheet" href="../styles/css/slick.css">
+        <link rel="stylesheet" href="../styles/css/lightcase.css"/>
+        <link rel="stylesheet" href="../styles/css/preloader.css"/>
+        
+        <!-- Revolution Slider Setting CSS -->
+        <link rel="stylesheet" href="../styles/css/settings.css">
+
+        <link rel="stylesheet" href="../styles/css/preset.css"/>
+        <link rel="stylesheet" href="../styles/css/ignore_for_wp.css"/>
+        <link rel="stylesheet" href="../styles/css/theme.css"/>
+        <link rel="stylesheet" href="../styles/css/responsive.css"/>
+        <!-- End Include All CSS -->
+
+        <!-- Favicon Icon -->
+        <link rel="icon"  type="image/png" href="../assets/images/favicon.png">
+        <!-- Favicon Icon -->
+        
+        <style>
+        .paperItem {
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .paperItem:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .piThumb {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .piThumb img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .paperItem:hover .piThumb img {
+            transform: scale(1.05);
+        }
+        
+        .piDetails {
+            padding: 25px;
+        }
+        
+        .piDate {
+            display: inline-block;
+            background: #fc3329;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 0;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .piMeta {
+            margin-bottom: 15px;
+        }
+        
+        .piMeta span {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .piMeta i {
+            color: #fc3329;
+            margin-right: 5px;
+        }
+        
+        .piDetails h3 {
+            font-size: 18px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .piDetails h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .piDetails h3 a:hover {
+            color: #fc3329;
+        }
+        
+        .paperFooter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .readMore {
+            color: #fc3329;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .readMore:hover {
+            text-decoration: underline;
+        }
+        
+        .citationCount {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .citationCount i {
+            color: #fc3329;
+            margin-right: 5px;
+        }
+
+        /* 搜索框样式 */
+        .search-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 0;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #fc3329;
+        }
+
+        /* 无结果样式 */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .no-results i {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .no-results p {
+            font-size: 16px;
+            color: #666;
+        }
+        </style>
+    </head>
+    <body>
+        <!-- Start Preloader -->
+        <div class="preloader">
+            <div class="preloader-inner">
+                <div class="preloader-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader -->
+
+        <!-- Header will be loaded by header-loader.js -->
+
+        <!-- Start Page Banner -->
+        <div class="pageBanner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bannerContent text-center">
+                            <h1 id="pageTitle">RFIC Research Papers</h1>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active" id="breadcrumbText">RFIC</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+        <!-- Start Blog List Page -->
+        <div class="blogListPage">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- 搜索框 -->
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search RFIC papers by title, author, or tags..." id="searchInput">
+                        </div>
+
+                        <!-- 论文列表容器 -->
+                        <div class="row" id="papersContainer">
+                            <!-- 论文卡片将通过JavaScript动态渲染 -->
+                        </div>
+
+                        <!-- 分页 -->
+                        <div class="labPagination text-center">
+                            <!-- 分页按钮将通过JavaScript动态渲染 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Blog List Page -->
+
+        <!-- Start Footer -->
+        <div id="footer"></div>
+        <!-- End Footer -->
+
+        <!-- Start Include All JS -->
+        <script src="../scripts/js/jquery.js"></script>
+        <script src="../scripts/js/bootstrap.min.js"></script>
+        <script src="../scripts/js/owl.carousel.min.js"></script>
+        <script src="../scripts/js/slick.js"></script>
+        <script src="../scripts/js/lightcase.js"></script>
+        <script src="../scripts/js/theme.js"></script>
+        <script src="../scripts/js/header-loader.js"></script>
+        <!-- End Include All JS -->
+
+        <!-- Research Data and Renderer -->
+        <script src="../scripts/js/research-data.js"></script>
+        <script src="../scripts/js/research-renderer.js"></script>
+        
+        <script>
+        // 简单的RFIC页面渲染器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 筛选包含RFIC标签的论文
+            function getRFICPapers() {
+                return researchPapers.filter(function(paper) {
+                    return paper.tags && paper.tags.some(function(tag) {
+                        return tag.toLowerCase() === 'rfic';
+                    });
+                });
+            }
+            
+            // 创建论文卡片HTML
+            function createPaperCard(paper) {
+                const hasImage = paper.image && paper.image.trim().length > 0;
+                const doi = (paper.doi || '').trim();
+                const hasOfficial = paper.officialLink && /^https?:\/\//i.test(paper.officialLink);
+                const officialLink = hasOfficial ? paper.officialLink : (doi ? 'https://doi.org/' + doi : '');
+                
+                return '<div class="col-xl-4 col-lg-4 col-md-6">' +
+                    '<div class="paperItem">' +
+                    (hasImage ? '<div class="piThumb"><img src="' + paper.image + '" alt="' + paper.title + '"/></div>' : '') +
+                    '<div class="piDetails">' +
+                    '<div class="piDate">Published: ' + paper.year + '</div>' +
+                    '<div class="tags-container">' +
+                    paper.tags.map(function(tag) {
+                        return '<span class="tag-badge">' + tag + '</span>';
+                    }).join('') +
+                    '</div>' +
+                    '<div class="piMeta">' +
+                    '<span><i class="fa fa-user"></i>' + (paper.author || 'Unknown') + '</span>' +
+                    (paper.journal ? '<span><i class="fa fa-book"></i>' + paper.journal + '</span>' : '') +
+                    (doi ? '<span><i class="fa fa-link"></i>DOI: ' + doi + '</span>' : '') +
+                    '</div>' +
+                    '<h3><a href="research-single-dynamic.html?id=' + paper.id + '">' + paper.title + '</a></h3>' +
+                    '<div class="paperFooter">' +
+                    '<a href="' + (officialLink || 'research-single-dynamic.html?id=' + paper.id) + '" class="readMore" target="_blank">Read Abstract<i class="fa fa-arrow-right"></i></a>' +
+                    (doi ? '<span class="citationCount"><i class="fa fa-quote-left"></i>DOI</span>' : '') +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
+            
+            // 渲染论文列表
+            function renderPapers() {
+                const papers = getRFICPapers();
+                const container = document.querySelector('.blogListPage .container .row');
+                
+                if (!container) {
+                    console.error('Container not found');
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                papers.forEach(function(paper) {
+                    container.innerHTML += createPaperCard(paper);
+                });
+                
+                // 更新页面标题
+                document.getElementById('pageTitle').textContent = 'RFIC Research Papers (' + papers.length + ' Papers)';
+            }
+            
+            // 初始化
+            renderPapers();
+        });
+        </script>
+    </body>
+</html>

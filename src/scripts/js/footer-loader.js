@@ -120,21 +120,21 @@ class FooterLoader {
                 <aside class="widget">
                     <h3 class="widgetTitle">About Us</h3>
                     <ul>
-                        <li><a href="javascript:void(0);">Leadership Team</a></li>
-                        <li><a href="javascript:void(0);">News & Media</a></li>
-                        <li><a href="javascript:void(0);">Sustainability</a></li>
-                        <li><a href="javascript:void(0);">Careers</a></li>
+                        <li><a href="about.html">About AIDAC</a></li>
+                        <li><a href="team.html">Leadership Team</a></li>
+                        <li><a href="appointment.html">Contact Us</a></li>
+                        <li><a href="index.html">Home</a></li>
                     </ul>
                 </aside>
             </div>
             <div class="col-md-6 col-lg-2">
                 <aside class="widget">
-                    <h3 class="widgetTitle">Links</h3>
+                    <h3 class="widgetTitle">Research & Cases</h3>
                     <ul>
-                        <li><a href="javascript:void(0);">Knowledge base</a></li>
-                        <li><a href="javascript:void(0);">Report a Vulnerability</a></li>
-                        <li><a href="javascript:void(0);">Suppliers & Vendors</a></li>
-                        <li><a href="javascript:void(0);">Genova Diagnostics</a></li>
+                        <li><a href="research.html">Research Publications</a></li>
+                        <li><a href="blog-list-rsb.html">Case Studies</a></li>
+                        <li><a href="blog-grid-lsb.html">Events</a></li>
+                        <li><a href="antenna.html">Antenna</a></li>
                     </ul>
                 </aside>
             </div>

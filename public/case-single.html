@@ -82,13 +82,7 @@
                                 <p id="case-subtitle">Loading project description...</p>
                             </div>
                         </div>
-                        <div class="labGallerySlider owl-carousel" id="case-gallery">
-                            <!-- Case study images will be loaded dynamically -->
-                            <div class="galleryNavigation">
-                                <button class="gallery-nav prev-btn" id="prev-gallery"><i class="fa fa-angle-left"></i></button>
-                                <button class="gallery-nav next-btn" id="next-gallery"><i class="fa fa-angle-right"></i></button>
-                            </div>
-                        </div>
+
                         <div class="galleryMeta">
                             <div class="row" id="case-meta">
                                 <!-- Case study meta information will be loaded dynamically -->
@@ -149,17 +143,28 @@
                         </div>
                     </div>
                 </div>
+                <!-- Engagement Section -->
                 <div class="row mt86">
                     <div class="col-lg-12">
-                        <div class="galleryTestimonial">
-                            <div class="tmcsItem">
-                                <p>
-                                    AIDAC is at the forefront of AI-driven electronic design research, 
-                                    consistently delivering innovative solutions that bridge the gap between 
-                                    traditional engineering and modern artificial intelligence.
-                                </p>
-                                <h5 class="heebo">Dr. Sarah Chen</h5>
-                                <h6 class="heebo">Research Director</h6>
+                        <div class="caseEngagement">
+                            <!-- Like and Favorite Buttons -->
+                            <div class="engagementActions">
+                                <button class="engagementBtn" id="case-like-btn">
+                                    <i class="fa fa-thumbs-up"></i>
+                                    <span>Like</span>
+                                </button>
+                                <button class="engagementBtn" id="case-favorite-btn">
+                                    <i class="fa fa-heart"></i>
+                                    <span>Favorite</span>
+                                </button>
+                            </div>
+
+                            <!-- Comment Form -->
+                            <div class="commentForm">
+                                <form id="case-comment-form">
+                                    <textarea id="comment-content" placeholder="Share your thoughts..." required></textarea>
+                                    <button type="submit" class="submitBtn">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </div>

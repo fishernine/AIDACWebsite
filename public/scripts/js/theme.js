@@ -268,24 +268,56 @@
             autoplaySpeed: 1500,
             nav: false,
             dots: false,
-            responsiveClass:true,
+            responsiveClass: true,
+            smartSpeed: 600,
+            touchDrag: true,
+            mouseDrag: true,
+            pullDrag: true,
+            freeDrag: false,
+            stagePadding: 0,
+            autoWidth: false,
+            autoHeight: false,
             responsive:{
                 0:{
-                    items: 1
+                    items: 1,
+                    margin: 15
                 },
                 768:{
-                    items: 2
+                    items: 2,
+                    margin: 20
                 },
                 1023:{
-                    items: 3
+                    items: 3,
+                    margin: 25
                 },
                 1200:{
-                    items: 4
+                    items: 4,
+                    margin: 28
                 },
                 1600:{
-                    items: 5
+                    items: 5,
+                    margin: 28
                 }
             }
+        });
+        
+        // 确保文字内容始终可见
+        $researchSlider_obj.on('translated.owl.carousel', function() {
+            $(this).find('.researchItem').each(function() {
+                var $item = $(this);
+                var $content = $item.find('.riContent');
+                var $title = $content.find('h3');
+                var $meta = $content.find('.ricMeta');
+                
+                // 确保内容区域有足够的空间
+                if ($content.height() > $item.height() * 0.4) {
+                    $item.css('min-height', $content.height() + 100);
+                }
+                
+                // 确保文字不被截断
+                $title.css('white-space', 'normal');
+                $meta.css('white-space', 'normal');
+            });
         });
     }
     

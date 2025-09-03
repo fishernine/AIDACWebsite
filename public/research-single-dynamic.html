@@ -151,6 +151,42 @@
         .sci-badge {
             background: #ff6600;
         }
+
+        /* 互动区域样式 */
+        .engagement-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+        .engagement-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            color: #555;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            user-select: none;
+        }
+        .engagement-btn i { color: #fc3329; }
+        .engagement-btn:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateY(-1px);
+        }
+        .engagement-btn.active {
+            background: #fc3329;
+            color: #fff;
+            border-color: #fc3329;
+        }
+        .engagement-btn.active i { color: #fff; }
+        .engagement-count { font-weight: 600; }
         </style>
     </head>
     <body>
@@ -176,7 +212,7 @@
                     <div class="col-md-9 col-lg-7 col-xl-6">
                         <div class="pageBannerContent">
                             <h5>Research Details</h5>
-                            <h2 id="pageTitle">Research Paper Details</h2>
+                            <h2 id="pageTitle">Publication Overview</h2>
                             <div class="pageBreadCum">
                                 <a href="index.html">Home</a>
                                 <i class="fa fa-angle-right"></i>
@@ -207,10 +243,6 @@
                                 <p id="paperCategory">Loading...</p>
                             </div>
                             
-                            <div class="featured_image featured_img_research">
-                                <img id="paperImage" decoding="async" src="./assets/images/research/1.jpg" alt="AIDAC Research">
-                            </div>
-                            
                             <div class="research-meta">
                                 <div class="meta-item">
                                     <span class="meta-label">Author:</span>
@@ -226,7 +258,7 @@
                                     <span class="meta-value" id="paperYear">Loading...</span>
                                 </div>
                                 <div class="meta-item">
-                                    <span class="meta-label">Citations:</span>
+                                    <span class="meta-label">DOI:</span>
                                     <span class="meta-value" id="paperCitations">Loading...</span>
                                 </div>
                                 <div class="meta-item">
@@ -252,17 +284,23 @@
                                 <h3>Abstract</h3>
                                 <p id="paperAbstract">Loading...</p>
                                 
-                                <h3>Research Overview</h3>
-                                <p>This research paper presents significant findings in the field of <span id="paperCategoryText">research</span>. The study contributes to the advancement of knowledge and provides valuable insights for future research directions.</p>
-                                
-                                <h3>Methodology</h3>
-                                <p>The research methodology employed in this study follows rigorous scientific standards, ensuring the reliability and validity of the findings. The approach combines theoretical analysis with practical implementation to provide comprehensive results.</p>
-                                
-                                <h3>Key Findings</h3>
-                                <p>The study reveals important insights that contribute to the understanding of <span id="paperCategoryText2">research</span> principles and their applications in real-world scenarios. The results demonstrate significant improvements in performance and efficiency.</p>
-                                
-                                <h3>Conclusions</h3>
-                                <p>This research provides a solid foundation for future studies in the field and offers practical implications for industry applications. The findings support the development of innovative solutions and contribute to the overall advancement of the field.</p>
+                                <!-- 互动区域 -->
+                                <div class="engagement-bar" id="engagementBar">
+                                    <a href="javascript:void(0);" class="engagement-btn" id="likeBtn" aria-pressed="false">
+                                        <i class="fa fa-thumbs-up"></i>
+                                        <span>Like</span>
+                                        <span class="engagement-count" id="likeCount">0</span>
+                                    </a>
+                                    <a href="javascript:void(0);" class="engagement-btn" id="favoriteBtn" aria-pressed="false">
+                                        <i class="fa fa-star"></i>
+                                        <span>Favorite</span>
+                                        <span class="engagement-count" id="favCount">0</span>
+                                    </a>
+                                    <a href="javascript:void(0);" class="engagement-btn" id="shareBtn">
+                                        <i class="fa fa-share-alt"></i>
+                                        <span>Share</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

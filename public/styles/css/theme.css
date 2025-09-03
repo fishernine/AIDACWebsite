@@ -2074,6 +2074,17 @@ body.header-fixed {
     color: #392779;
     font-family: 'Heebo', sans-serif;
     margin: 0 0 32px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 默认显示两行 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+/* 展开状态下，解除标题省略 */
+.newsItem2.expanded h3{
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: initial;
+    overflow: visible;
 }
 .newsItem2 h3 a{
     color: inherit;
@@ -2638,6 +2649,7 @@ body.header-fixed {
 .researchItem{
     position: relative;
     overflow: hidden;
+    min-height: 180px; /* 调整为更短的卡片高度以贴合下一区域 */
 }
 .researchItem img{
     width: 100%;
@@ -2675,6 +2687,8 @@ body.header-fixed {
     bottom: 0;
     z-index: 2;
     padding: 40px 35px 43px 62px;
+    width: 100%; /* 确保内容区域占满宽度 */
+    box-sizing: border-box; /* 确保padding不会导致溢出 */
 } 
 .riContent:before{
     content: '';
@@ -2698,6 +2712,9 @@ body.header-fixed {
     position: relative;
     z-index: 2;
     margin: 0 0 10px;
+    white-space: nowrap; /* 防止文字换行 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    text-overflow: ellipsis; /* 显示省略号 */
 }
 .ricMeta a{
     color: inherit;
@@ -2710,9 +2727,15 @@ body.header-fixed {
     position: relative;
     z-index: 2;
     margin: 0;
+    white-space: nowrap; /* 防止标题换行 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    text-overflow: ellipsis; /* 显示省略号 */
+    max-width: 100%; /* 确保不超出容器 */
 }
 .riContent h3 a{
     color: inherit;
+    display: block; /* 确保链接占满整个区域 */
+    width: 100%; /* 确保链接占满整个区域 */
 }
 .ricMeta a:hover, .riContent h3 a:hover{
     color: #1c1c1c;
@@ -5417,4 +5440,60 @@ blockquote p{
     position: relative;
     display: block;
     margin: 10px 0 0;
+}
+
+/* Tags样式 - 统一标签容器 */
+.tags-container {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+}
+
+/* Published标签样式 - 橙色背景，更突出 */
+.piDate {
+    display: inline-block;
+    background: #fc3329;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    line-height: 1.2;
+    vertical-align: baseline;
+}
+
+/* 种类标签样式 - 橙色边框，白底橙字 */
+.tag-badge {
+    display: inline-block;
+    background: white;
+    color: #fc3329;
+    padding: 6px 12px;
+    border-radius: 0;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid #fc3329;
+    line-height: 1.2;
+    vertical-align: baseline;
+}
+
+/* 确保轮播组件中的文字始终可见 - 最小化修改 */
+.researchSlider .owl-item {
+    overflow: visible;
+}
+
+.researchSlider .researchItem {
+    overflow: visible;
+}
+
+.researchSlider .riContent {
+    overflow: visible;
+    word-wrap: break-word;
+    white-space: normal;
 }
